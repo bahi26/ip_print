@@ -1,28 +1,11 @@
 import sys
 import json
-from ipaddress import ip_address
 from typing import Tuple, List, Optional
 
 
-def validate_ipv4(ip: str) -> Optional[ValueError]:
-    try:
-        address = ip_address(ip)
-        if address.version != 4:
-            return ValueError(f"IP address {ip} is not IPv4.")
-    except ValueError:
-        return ValueError(f"Invalid IP address format: {ip}")
-    return None
-
-
-# Note: In this function if a part of the data is invalid, then we stop the process and return exception.
 def get_ips(json_data: dict) -> Tuple[Optional[List[str]], Optional[Exception]]:
     try:
         ip_values = json_data["vm_private_ips"]["value"]
-
-        for ip in ip_values.values():
-            error = validate_ipv4(ip)
-            if error:
-                return None, error
 
         if "network" in json_data:
             network_values = {}
@@ -30,9 +13,6 @@ def get_ips(json_data: dict) -> Tuple[Optional[List[str]], Optional[Exception]]:
                 for vm in json_data["network"]["vms"]:
                     name = vm["attributes"]["name"]
                     ip = vm["attributes"]["access_ip_v4"]
-                    error = validate_ipv4(ip)
-                    if error:
-                        return None, error
                     network_values[name] = ip
 
             ip_addresses = []

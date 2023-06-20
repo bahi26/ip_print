@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code and input files from git repository'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/bahi26/ip_print']])
+            }
+        }
+
+        stage('input1') {
+            steps {
+                echo 'Running ip_print for input1.json'
+                sh 'python3 ip_print_main.py input1.json'
+            }
+        }
+        
+        stage('input2') {
+            steps {
+                echo 'Running ip_print for input2.json'
+                sh 'python3 ip_print_main.py input2.json'
+            }
+        }
+    }
+}
