@@ -1,0 +1,11 @@
+{
+"vm_private_ips": {
+    "sensitive": false,
+    "type": "map",
+    "value": {
+        "jenkins-agent-vm-1": "192.168.101.101",
+        "jenkins-agent-vm-2": "192.168.101.70",
+        "jenkins-agent-vm-3": "192.168.101.153"
+    }
+  }
+}

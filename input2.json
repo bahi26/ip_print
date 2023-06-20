@@ -1,0 +1,39 @@
+{
+  "vm_private_ips": {
+    "sensitive": false,
+    "type": "map",
+    "value": {
+      "gocd-agent-vm-1": "192.168.102.33",
+      "gocd-agent-vm-2": "192.168.103.74",
+      "gocd-agent-vm-3": "192.168.102.155"
+    }
+  },
+  "network": {
+    "vms": [
+      {
+        "id": "1",
+        "attributes": {
+          "name": "gocd-agent-vm-2",
+          "access_ip_v4": "10.0.0.77",
+          "availability_zone": "zoneA"
+        }
+      },
+      {
+        "id": "2",
+        "attributes": {
+          "name": "gocd-agent-vm-1",
+          "access_ip_v4": "10.0.0.87",
+          "availability_zone": "zoneA"
+        }
+      },
+      {
+        "id": "3",
+        "attributes": {
+          "name": "gocd-agent-vm-3",
+          "access_ip_v4": "10.0.0.99",
+          "availability_zone": "zoneB"
+        }
+      }
+    ]
+  }
+}
